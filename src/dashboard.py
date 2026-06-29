@@ -231,9 +231,9 @@ if page=="🏠 Home":
 # SATELLITE
 # --------------------------------------------------
 
-elif page == "🛰️ Satellite":
+elif page == "🛰 Satellite":
 
-    st.title("🛰️ Satellite Layers")
+    st.title("🛰Satellite Layers")
 
     layer = st.selectbox(
         "Select Layer",
@@ -249,6 +249,10 @@ elif page == "🛰️ Satellite":
     }
 
     img = image_paths[layer]
+
+    st.write("Current directory:", os.getcwd())
+    st.write("Image path:", img)
+    st.write("Exists:", os.path.exists(img))
 
     if os.path.exists(img):
         st.image(img, use_container_width=True)
