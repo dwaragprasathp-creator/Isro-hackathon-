@@ -1,0 +1,13 @@
+Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score,Feasibility Score,Cost Efficiency,Optimization Score,Rank
+Temple Tank Restoration,Traditional,40.84,3.3,1800000,Medium,192.95,3,0.18333333333333332,195.91666666666666,1
+Village Pond Restoration,Traditional,41.19,2.95,1200000,High,186.36,4,0.24583333333333335,188.72916666666666,2
+Sacred Grove,Traditional,43.12,1.02,900000,Medium,80.26,3,0.11333333333333334,81.56666666666666,3
+Neem Plantation,Traditional,43.57,0.57,250000,High,68.38,4,0.22799999999999998,69.64,4
+Urban Forest,Modern,43.36,0.78,4500000,Medium,64.38,3,0.017333333333333333,69.08666666666667,5
+Green Roof,Modern,43.72,0.42,2500000,Medium,48.62,3,0.0168,51.084,6
+Lime Plaster,Traditional,44.2,-0.06,650000,Very High,46.32,5,-0.00923076923076923,46.95384615384615,7
+Vertical Garden,Modern,43.83,0.31,2200000,Medium,43.23,3,0.014090909090909091,45.570454545454545,8
+Clay Tile Roof,Traditional,44.21,-0.07,850000,High,35.52,4,-0.00823529411764706,36.45882352941177,9
+White Lime Roof,Traditional,44.23,-0.09,800000,High,34.66,4,-0.01125,35.44375,10
+Cool Roof,Modern,44.26,-0.12,1200000,High,32.75,4,-0.01,33.95,11
+Courtyard Houses,Traditional,44.19,-0.05,3000000,Low,14.57,2,-0.0016666666666666668,17.491666666666667,12
