@@ -5,6 +5,7 @@ import plotly.express as px
 import rasterio
 import matplotlib.pyplot as plt
 from pathlib import Path
+import os
 
 # --------------------------------------------------
 # PAGE CONFIG
@@ -230,69 +231,30 @@ if page=="🏠 Home":
 # SATELLITE
 # --------------------------------------------------
 
-elif page=="🛰 Satellite":
+elif page == "🛰️ Satellite":
 
-    st.title("🛰 Satellite Layers")
+    st.title("🛰️ Satellite Layers")
 
-    layers={
-
-        "NDVI":"ndvi.tif",
-
-        "NDWI":"ndwi.tif",
-
-        "NDBI":"ndbi.tif",
-
-        "LST":"lst.tif",
-
-        "Heat Risk":"heat_risk.tif"
-
-    }
-
-    choice=st.selectbox(
-
+    layer = st.selectbox(
         "Select Layer",
-
-        list(
-
-            layers.keys()
-
-        )
-
+        ["NDVI", "NDWI", "NDBI", "LST", "Heat Risk"]
     )
 
-    file=DATA/layers[choice]
+    image_paths = {
+        "NDVI": "outputs/maps/ndvi_Final.png",
+        "NDWI": "outputs/maps/ndwi_Final.png",
+        "NDBI": "outputs/maps/ndbi_Final.png",
+        "LST": "outputs/maps/lst_Final.png",
+        "Heat Risk": "outputs/maps/heat_risk_Final.png"
+    }
 
-    if file.exists():
+    img = image_paths[layer]
 
-        image=raster(file)
-
-        fig,ax=plt.subplots(
-
-            figsize=(8,8)
-
-        )
-
-        ax.imshow(
-
-            image,
-
-            cmap="viridis"
-
-        )
-
-        ax.set_title(choice)
-
-        ax.axis("off")
-
-        st.pyplot(fig)
-
+    if os.path.exists(img):
+        st.image(img, use_container_width=True)
     else:
-
-        st.error(
-
-            "Raster not found"
-
-        )# --------------------------------------------------
+        st.error(f"Image not found: {img}")
+# --------------------------------------------------
 # AI ANALYTICS
 # --------------------------------------------------
 
