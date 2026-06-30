@@ -247,7 +247,7 @@ elif page == "🛰 Satellite":
 
     layer = st.selectbox(
         "Select Layer",
-        ["NDVI", "NDWI", "NDBI", "LST", "Heat Risk"]
+        ["NDVI", "NDWI", "NDBI", "LST", "Heat Risk" , "Elevation"]
     )
 
     image_paths = {
@@ -255,8 +255,9 @@ elif page == "🛰 Satellite":
         "NDWI": "outputs/maps/ndwi_Final.png",
         "NDBI": "outputs/maps/ndbi_Final.png",
         "LST": "outputs/maps/lst_Final.png",
-        "Heat Risk": "outputs/maps/heat_risk_Final.png"
-    }
+        "Heat Risk": "outputs/maps/heat_risk_Final.png",
+        "Elevation":"outputs/maps/hyderabad_dem_Final.png"
+   }
 
     img = image_paths[layer]
 
