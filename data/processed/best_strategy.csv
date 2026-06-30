@@ -1,2 +1,2 @@
-Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score,Feasibility Score,Cost Efficiency,Optimization Score,Rank
-Temple Tank Restoration,Traditional,40.84,3.3,1800000,Medium,192.95,3,0.18333333333333332,195.91666666666666,1
+Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score,Feasibility Score,Cost Efficiency,Recommended When,Recommended Action,Reason,Optimization Score,Rank
+Urban Waterbody Restoration,Traditional,40.84,3.0,1800000,Medium,178.2,3,0.16666666666666666,LST 40–42°C (High Heat),Priority Cooling Measures,Provides evaporative cooling and reduces heat stress,180.83333333333334,1

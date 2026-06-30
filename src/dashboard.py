@@ -93,6 +93,8 @@ page = st.sidebar.radio(
 
         "💰 Budget",
 
+        "⭐ Novelty",
+
         "📄 Reports"
 
     ]
@@ -122,7 +124,7 @@ ISRO Hackathon 2026
 if page=="🏠 Home":
 
     st.title("🛰 AI Urban Heat Island Decision Support System")
-
+    st.caption("📍 Study Area: Hyderabad, Telangana, India")
     st.write(
 
         "Physics-Informed AI based Decision Support Platform"
@@ -234,6 +236,14 @@ if page=="🏠 Home":
 elif page == "🛰 Satellite":
 
     st.title("🛰Satellite Layers")
+    st.info("""
+    📍 Study Area: Hyderabad, Telangana, India
+
+     Satellite Data:
+    • Sentinel-2 MSI
+    • ERA5 Climate Data
+    • SRTM DEM
+     """)
 
     layer = st.selectbox(
         "Select Layer",
@@ -265,7 +275,7 @@ elif page == "🛰 Satellite":
 elif page=="🤖 AI Analytics":
 
     st.title("🤖 AI Analytics")
-
+    st.caption("Study Area: Hyderabad, Telangana, India")
     if len(metrics)>0:
 
         st.subheader("Model Performance")
@@ -281,6 +291,60 @@ elif page=="🤖 AI Analytics":
                 round(row["Value"],3)
 
             )
+            st.markdown("---")
+
+            st.subheader("🤖 AI Model Summary")
+
+            st.info("""
+
+            ### Model Used
+            Random Forest Regressor
+
+            ### Input Features
+            • NDVI (Vegetation Index)
+
+            • NDWI (Water Index)
+
+            • NDBI (Built-up Index)
+
+            • Elevation (SRTM DEM)
+
+            ### Prediction Target
+            Land Surface Temperature (LST)
+
+            ### Decision Support
+            The Physics-Informed AI model combines satellite-derived indices with terrain information to estimate urban heat and recommend suitable mitigation strategies.
+
+             """)
+            st.markdown("---")
+
+            st.subheader("💡 How AI Makes Decisions")
+
+            st.success("""
+
+            The AI recommends mitigation strategies based on:
+
+            • High Land Surface Temperature (LST)
+
+            • Low Vegetation (NDVI)
+
+            • High Built-up Density (NDBI)
+
+            • Water Availability (NDWI)
+
+            • Terrain Elevation (DEM)
+
+            The recommendation engine prioritizes solutions using:
+
+            • Estimated Cooling Effect
+
+            • Implementation Cost
+
+            • Feasibility
+
+            • Urban Suitability
+
+             """) 
 
     else:
 
@@ -357,7 +421,7 @@ elif page=="🤖 AI Analytics":
 elif page=="🌳 Recommendations":
 
     st.title("🌳 AI Recommendations")
-
+    st.caption("Recommendations generated for Hyderabad Urban Heat Island mitigation.")
     if len(recommend)>0:
 
         st.dataframe(
@@ -407,7 +471,7 @@ elif page=="🌳 Recommendations":
 elif page=="📊 Scenario":
 
     st.title("📊 Scenario Optimizer")
-
+    st.caption("Scenario analysis for Hyderabad metropolitan region.")
     if len(cooling)>0:
 
         st.dataframe(
@@ -487,7 +551,7 @@ elif page=="📊 Scenario":
 elif page == "💰 Budget":
 
     st.title("💰 Budget Planner")
-
+    st.caption("Estimated implementation budget for Hyderabad.")
     if len(budget) > 0:
 
         st.subheader("Budget Plans")
@@ -539,7 +603,58 @@ elif page == "💰 Budget":
     else:
 
         st.warning("implementation_plan.csv not found")
+# --------------------------------------------------
+# NOVELTY
+# --------------------------------------------------
 
+elif page == "⭐ Novelty":
+
+    st.title("⭐ Project Novelty")
+
+    st.success("""
+### What makes our system unique?
+
+✅ Physics-Informed AI for Urban Heat Prediction
+
+✅ Multi-source Satellite Data Fusion
+(Sentinel-2 + ERA5 + SRTM DEM)
+
+✅ Explainable AI
+(Reason + Recommended Action)
+
+✅ Temperature-Triggered Recommendations
+
+✅ Cost & Feasibility Based Decision Support
+
+✅ Urban Planning Focused Recommendations
+
+✅ AI Scenario Optimizer for Heat Mitigation
+
+✅ Publication-quality GIS Maps
+
+""")
+
+    st.markdown("---")
+
+    st.subheader("Innovation Highlights")
+
+    st.write("""
+Instead of only predicting Urban Heat Islands,
+our system recommends practical mitigation
+strategies based on:
+
+- AI Prediction
+- Land Surface Temperature
+- Vegetation
+- Water Availability
+- Built-up Density
+- Terrain Elevation
+- Cost
+- Feasibility
+
+making it a complete **Decision Support System**
+rather than just a prediction model.
+""")
 # --------------------------------------------------
 # REPORTS
 # --------------------------------------------------
@@ -547,7 +662,7 @@ elif page == "💰 Budget":
 elif page == "📄 Reports":
 
     st.title("📄 Reports")
-
+    st.caption("Generated reports for Hyderabad Urban Heat Island Decision Support System.")
     reports = [
 
         "model_metrics.csv",
@@ -618,8 +733,8 @@ This project predicts Urban Heat Island intensity using
 The Physics-Informed AI model recommends
 
 - Urban Forest
-- Temple Tank Restoration
-- Village Pond Restoration
+- Urban Waterbody Restoration
+- Pond Restoration
 - Cool Roof
 - White Lime Roof
 - Green Roof

@@ -58,11 +58,11 @@ for idx, row in df.iterrows():
     if row["ndwi"] < 0:
 
         recommendations.append(
-            "Temple Tank Restoration"
+            "Urban Waterbody Restoration"
         )
 
         recommendations.append(
-            "Village Pond Restoration"
+            "Pond Restoration"
         )
 
         reasons.append(

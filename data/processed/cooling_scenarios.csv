@@ -1,13 +1,13 @@
 Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score
-Temple Tank Restoration,Traditional,40.84,3.3,1800000,Medium,192.95
-Village Pond Restoration,Traditional,41.19,2.95,1200000,High,186.36
-Sacred Grove,Traditional,43.12,1.02,900000,Medium,80.26
-Neem Plantation,Traditional,43.57,0.57,250000,High,68.38
-Urban Forest,Modern,43.36,0.78,4500000,Medium,64.38
-Green Roof,Modern,43.72,0.42,2500000,Medium,48.62
-Lime Plaster,Traditional,44.2,-0.06,650000,Very High,46.32
-Vertical Garden,Modern,43.83,0.31,2200000,Medium,43.23
-Clay Tile Roof,Traditional,44.21,-0.07,850000,High,35.52
-White Lime Roof,Traditional,44.23,-0.09,800000,High,34.66
-Cool Roof,Modern,44.26,-0.12,1200000,High,32.75
-Courtyard Houses,Traditional,44.19,-0.05,3000000,Low,14.57
+Urban Waterbody Restoration,Traditional,40.84,3.0,1800000,Medium,178.2
+Pond Restoration,Traditional,41.19,2.56,1200000,High,166.8
+Urban Forest,Modern,43.36,2.41,4500000,Medium,156.0
+Sacred Grove,Traditional,43.12,2.21,900000,Medium,139.6
+Neem Plantation,Traditional,43.57,1.43,250000,High,111.25
+Green Roof,Modern,43.72,1.37,2500000,Medium,106.0
+Cool Roof,Modern,44.26,1.08,1200000,High,102.8
+Vertical Garden,Modern,43.83,1.02,2200000,Medium,88.8
+Lime Plaster,Traditional,44.2,0.72,650000,Very High,85.35
+White Lime Roof,Traditional,44.23,0.9,800000,High,84.2
+Clay Tile Roof,Traditional,44.21,0.78,850000,High,78.15
+Courtyard Houses,Traditional,44.19,0.6,3000000,Low,47.0

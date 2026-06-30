@@ -19,6 +19,7 @@ features = model.feature_names_in_.tolist()
 
 print("\nFeatures Used by Model:")
 print(features)
+
 # Baseline Prediction
 baseline = model.predict(df[features]).mean()
 
@@ -41,14 +42,14 @@ scenarios = {
         "feasibility": "Medium"
     },
 
-    "Temple Tank Restoration": {
+    "Urban Waterbody Restoration": {
         "category": "Traditional",
         "ndwi": 0.30,
         "cost": 1800000,
         "feasibility": "Medium"
     },
 
-    "Village Pond Restoration": {
+    "Pond Restoration": {
         "category": "Traditional",
         "ndwi": 0.25,
         "cost": 1200000,
@@ -111,6 +112,27 @@ scenarios = {
         "feasibility": "Medium"
     }
 }
+# -----------------------------
+# Literature-based Cooling Range (Planning Estimates)
+# -----------------------------
+cooling_reference = {
+
+    "Urban Forest": 3.5,
+    "Green Roof": 2.0,
+    "Cool Roof": 1.8,
+    "Vertical Garden": 1.5,
+
+    "Urban Waterbody Restoration": 2.8,
+    "Pond Restoration": 2.3,
+
+    "Neem Plantation": 2.0,
+    "Sacred Grove": 3.0,
+
+    "Lime Plaster": 1.2,
+    "White Lime Roof": 1.5,
+    "Clay Tile Roof": 1.3,
+    "Courtyard Houses": 1.0
+}
 feasibility_score = {
 
     "Very High":5,
@@ -169,11 +191,20 @@ for name, info in scenarios.items():
         sim[features]
     ).mean()
 
-    cooling = baseline - pred
+    ai_cooling = max(0, baseline - pred)
+
+    reference = cooling_reference[name]
+
+    cooling = round((0.6 * reference) + (0.4 * ai_cooling), 2)
 
     # -----------------------------
     # Overall Score
     # -----------------------------
+    # -----------------------------
+    # Urban Suitability Bonus
+    # -----------------------------
+    urban_bonus = 10 if info["category"] == "Modern" else 0
+
     overall = (
 
         cooling * 50
@@ -184,7 +215,11 @@ for name, info in scenarios.items():
             info["feasibility"]
         ] * 10
 
-        -
+        +
+
+        urban_bonus
+
+         -
 
         info["cost"] / 1000000
 

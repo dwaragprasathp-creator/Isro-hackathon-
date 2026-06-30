@@ -1,13 +1,13 @@
-Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score,Feasibility Score,Cost Efficiency,Optimization Score,Rank
-Temple Tank Restoration,Traditional,40.84,3.3,1800000,Medium,192.95,3,0.18333333333333332,195.91666666666666,1
-Village Pond Restoration,Traditional,41.19,2.95,1200000,High,186.36,4,0.24583333333333335,188.72916666666666,2
-Sacred Grove,Traditional,43.12,1.02,900000,Medium,80.26,3,0.11333333333333334,81.56666666666666,3
-Neem Plantation,Traditional,43.57,0.57,250000,High,68.38,4,0.22799999999999998,69.64,4
-Urban Forest,Modern,43.36,0.78,4500000,Medium,64.38,3,0.017333333333333333,69.08666666666667,5
-Green Roof,Modern,43.72,0.42,2500000,Medium,48.62,3,0.0168,51.084,6
-Lime Plaster,Traditional,44.2,-0.06,650000,Very High,46.32,5,-0.00923076923076923,46.95384615384615,7
-Vertical Garden,Modern,43.83,0.31,2200000,Medium,43.23,3,0.014090909090909091,45.570454545454545,8
-Clay Tile Roof,Traditional,44.21,-0.07,850000,High,35.52,4,-0.00823529411764706,36.45882352941177,9
-White Lime Roof,Traditional,44.23,-0.09,800000,High,34.66,4,-0.01125,35.44375,10
-Cool Roof,Modern,44.26,-0.12,1200000,High,32.75,4,-0.01,33.95,11
-Courtyard Houses,Traditional,44.19,-0.05,3000000,Low,14.57,2,-0.0016666666666666668,17.491666666666667,12
+Technique,Category,Average Temperature (°C),Estimated Cooling (°C),Estimated Cost (₹),Feasibility,Overall Score,Feasibility Score,Cost Efficiency,Recommended When,Recommended Action,Reason,Optimization Score,Rank
+Urban Waterbody Restoration,Traditional,40.84,3.0,1800000,Medium,178.2,3,0.16666666666666666,LST 40–42°C (High Heat),Priority Cooling Measures,Provides evaporative cooling and reduces heat stress,180.83333333333334,1
+Pond Restoration,Traditional,41.19,2.56,1200000,High,166.8,4,0.21333333333333335,LST 40–42°C (High Heat),Priority Cooling Measures,Improves local cooling and water retention,169.06666666666666,2
+Urban Forest,Modern,43.36,2.41,4500000,Medium,156.0,3,0.05355555555555556,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,High LST and low vegetation cover,150.76777777777778,3
+Sacred Grove,Traditional,43.12,2.21,900000,Medium,139.6,3,0.24555555555555555,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Dense vegetation helps reduce surrounding temperature,141.7277777777778,4
+Neem Plantation,Traditional,43.57,1.43,250000,High,111.25,4,0.572,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Native trees increase shade and cooling,114.36,5
+Green Roof,Modern,43.72,1.37,2500000,Medium,106.0,3,0.0548,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Suitable for dense urban buildings,98.774,6
+Cool Roof,Modern,44.26,1.08,1200000,High,102.8,4,0.09000000000000001,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Reduces rooftop heat absorption,94.45,7
+Lime Plaster,Traditional,44.2,0.72,650000,Very High,85.35,5,0.11076923076923076,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Reflective surface reduces heat absorption,86.55384615384615,8
+White Lime Roof,Traditional,44.23,0.9,800000,High,84.2,4,0.1125,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,High solar reflectance lowers roof temperature,85.5625,9
+Vertical Garden,Modern,43.83,1.02,2200000,Medium,88.8,3,0.046363636363636364,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Improves urban greenery where space is limited,81.23181818181818,10
+Clay Tile Roof,Traditional,44.21,0.78,850000,High,78.15,4,0.09176470588235294,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Natural insulation reduces heat transfer,79.45882352941176,11
+Courtyard Houses,Traditional,44.19,0.6,3000000,Low,47.0,2,0.02,LST ≥ 42°C (Extreme Heat),Immediate Intervention Required,Traditional climate-responsive design,50.1,12

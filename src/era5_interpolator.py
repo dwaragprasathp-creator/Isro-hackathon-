@@ -40,28 +40,27 @@ utm_x, utm_y = transformer.transform(
 
 points = np.column_stack((utm_x, utm_y))
 
-# ---------------------------------------------------
-# Landsat Pixel Coordinates
-# ---------------------------------------------------
-cols, rows = np.meshgrid(
-    np.arange(width),
-    np.arange(height)
-)
+# -----------------------------------
+# Landsat Pixel Coordinates (2D)
+# -----------------------------------
+rows, cols = np.indices((height, width))
 
-cols, rows = np.meshgrid(
-    np.arange(width),
-    np.arange(height)
-)
+xs = np.zeros((height, width), dtype=np.float64)
+ys = np.zeros((height, width), dtype=np.float64)
 
-xs, ys = rasterio.transform.xy(
-    transform,
-    rows,
-    cols,
-    offset="center"
-)
+for r in range(height):
+    for c in range(width):
+        x, y = rasterio.transform.xy(
+            transform,
+            r,
+            c,
+            offset="center"
+        )
+        xs[r, c] = x
+        ys[r, c] = y
 
-grid_x = np.array(xs)
-grid_y = np.array(ys)
+grid_x = xs
+grid_y = ys
 
 # ---------------------------------------------------
 # Variables

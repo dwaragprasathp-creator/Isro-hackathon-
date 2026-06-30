@@ -67,7 +67,16 @@ maps = {
 
         "unit":"Risk"
 
-    }
+    },
+    "hyderabad_dem.tif": {
+
+    "title": "Digital Elevation Model (SRTM DEM)",
+
+    "cmap": "terrain",
+
+    "unit": "Meters"
+
+},
 
 }
 
@@ -79,7 +88,13 @@ print("="*60)# ==========================================================
 
 for filename, info in maps.items():
 
-    raster_path = INPUT / filename
+    if filename == "hyderabad_dem.tif":
+
+        raster_path = Path("data/raw/srtm") / filename
+
+    else:
+
+        raster_path = INPUT / filename
 
     if not raster_path.exists():
 
@@ -127,6 +142,9 @@ for filename, info in maps.items():
 
     ax.set_yticks([])
 
+    # ------------------------------------------
+    # Map Title
+    # ------------------------------------------
     ax.set_title(
 
         info["title"],
@@ -137,6 +155,29 @@ for filename, info in maps.items():
 
         pad=20
 
+     )
+
+    # ------------------------------------------
+    #Study Area
+    # ------------------------------------------
+    ax.text(
+
+         0.5,
+
+        1.01,
+
+         "Study Area: Hyderabad, Telangana, India",
+
+         transform=ax.transAxes,
+
+         ha="center",
+
+         fontsize=12,
+
+         color="darkred",
+
+         fontweight="bold"
+
     )
 
     # ------------------------------------------
@@ -145,9 +186,9 @@ for filename, info in maps.items():
 
     arrow = FancyArrowPatch(
 
-        (0.93,0.12),
+        (0.92,0.78),
 
-        (0.93,0.23),
+        (0.92,0.92),
 
         mutation_scale=25,
 
@@ -161,9 +202,9 @@ for filename, info in maps.items():
 
     ax.text(
 
-        0.93,
+        0.92,
 
-        0.25,
+        0.95,
 
         "N",
 
@@ -187,10 +228,11 @@ for filename, info in maps.items():
 
         ax=ax,
 
-        shrink=0.75,
+        shrink=0.82,
 
-        pad=0.02
-
+        pad=0.03,
+        
+        fraction=0.045
     )
 
     cbar.set_label(
@@ -217,9 +259,9 @@ for filename, info in maps.items():
 
     ax.text(
 
-        1.04,
+        1.08,
 
-        0.60,
+        0.45,
 
         stats,
 
@@ -295,7 +337,7 @@ for filename, info in maps.items():
     # Layout
     # ------------------------------------------
 
-    plt.tight_layout()
+    plt.tight_layout(rect=[0,0.05,0.88,0.96])
 
     outfile = OUTPUT / f"{raster_path.stem}_Final.png"
 

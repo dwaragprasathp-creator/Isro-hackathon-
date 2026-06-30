@@ -30,6 +30,108 @@ df["Cost Efficiency"] = (
     df["Estimated Cooling (°C)"] /
     (df["Estimated Cost (₹)"] / 100000)
 )
+# -----------------------------------------------------
+# Temperature-Based Recommendation
+# -----------------------------------------------------
+# -----------------------------------------------------
+# Temperature Trigger & Recommended Action
+# -----------------------------------------------------
+
+recommended_when = []
+recommended_action = []
+
+for temp in df["Average Temperature (°C)"]:
+
+    if temp >= 42:
+
+        recommended_when.append("LST ≥ 42°C")
+        recommended_action.append("Immediate Intervention Required")
+
+    elif temp >= 40:
+
+        recommended_when.append("LST 40–42°C")
+        recommended_action.append("Priority Cooling Measures")
+
+    elif temp >= 35:
+
+        recommended_when.append("LST 35–40°C")
+        recommended_action.append("Preventive Heat Mitigation")
+
+    else:
+
+        recommended_when.append("LST < 35°C")
+        recommended_action.append("Routine Monitoring")
+
+df["Recommended When"] = recommended_when
+df["Recommended Action"] = recommended_action
+# -----------------------------------------------------
+# Reason for Recommendation
+# -----------------------------------------------------
+
+reasons = []
+
+for _, row in df.iterrows():
+
+    if row["Technique"] == "Urban Forest":
+        reasons.append("High LST and low vegetation cover")
+
+    elif row["Technique"] == "Green Roof":
+        reasons.append("Suitable for dense urban buildings")
+
+    elif row["Technique"] == "Cool Roof":
+        reasons.append("Reduces rooftop heat absorption")
+
+    elif row["Technique"] == "Vertical Garden":
+        reasons.append("Improves urban greenery where space is limited")
+
+    elif row["Technique"] == "Urban Waterbody Restoration":
+        reasons.append("Provides evaporative cooling and reduces heat stress")
+
+    elif row["Technique"] == "Pond Restoration":
+        reasons.append("Improves local cooling and water retention")
+
+    elif row["Technique"] == "Neem Plantation":
+        reasons.append("Native trees increase shade and cooling")
+
+    elif row["Technique"] == "Sacred Grove":
+        reasons.append("Dense vegetation helps reduce surrounding temperature")
+
+    elif row["Technique"] == "Lime Plaster":
+        reasons.append("Reflective surface reduces heat absorption")
+
+    elif row["Technique"] == "White Lime Roof":
+        reasons.append("High solar reflectance lowers roof temperature")
+
+    elif row["Technique"] == "Clay Tile Roof":
+        reasons.append("Natural insulation reduces heat transfer")
+
+    else:
+        reasons.append("Traditional climate-responsive design")
+
+df["Reason"] = reasons
+
+
+# -----------------------------------------------------
+# Temperature Trigger
+# -----------------------------------------------------
+conditions = []
+
+for temp in df["Average Temperature (°C)"]:
+
+    if temp >= 42:
+        conditions.append("LST ≥ 42°C (Extreme Heat)")
+
+    elif temp >= 40:
+        conditions.append("LST 40–42°C (High Heat)")
+
+    elif temp >= 35:
+        conditions.append("LST 35–40°C (Moderate Heat)")
+
+    else:
+        conditions.append("LST < 35°C (Low Heat)")
+
+df["Recommended When"] = conditions
+
 
 # -----------------------------------------------------
 # Overall Optimization Score
