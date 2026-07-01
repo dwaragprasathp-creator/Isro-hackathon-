@@ -73,7 +73,7 @@ cooling = load_csv("cooling_scenarios.csv")
 # SIDEBAR
 # --------------------------------------------------
 
-st.sidebar.title("🛰 ISRO Dashboard")
+st.sidebar.title(" ISRO Decision Support System")
 
 page = st.sidebar.radio(
 
@@ -81,21 +81,21 @@ page = st.sidebar.radio(
 
     [
 
-        "🏠 Home",
+        "Home",
 
-        "🛰 Satellite",
+        "Satellite",
 
-        "🤖 AI Analytics",
+        "AI Analytics",
 
-        "🌳 Recommendations",
+        "Recommendations",
 
-        "📊 Scenario",
+        "Scenario",
 
-        "💰 Budget",
+        "Budget",
 
-        "⭐ Novelty",
+        "Novelty",
 
-        "📄 Reports"
+        "Reports"
 
     ]
 
@@ -121,86 +121,115 @@ ISRO Hackathon 2026
 # HOME
 # --------------------------------------------------
 
-if page=="🏠 Home":
+if page == "Home":
 
-    st.title("🛰 AI Urban Heat Island Decision Support System")
-    st.caption("📍 Study Area: Hyderabad, Telangana, India")
-    st.write(
+    st.title("AI Urban Heat Island Decision Support System")
 
-        "Physics-Informed AI based Decision Support Platform"
+    st.caption("ISRO Bharatiya Antariksh Hackathon 2026")
 
-    )
+    st.markdown("""
+### Study Area
+**Hyderabad, Telangana, India**
 
-    if len(feature)>0:
+Physics-Informed AI Decision Support Platform
+""")
 
-        c1,c2,c3,c4=st.columns(4)
+    st.divider()
+
+    st.subheader("Mission Summary")
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    if len(feature) > 0:
 
         c1.metric(
-
             "Average LST",
-
             f"{feature['lst'].mean():.2f} °C"
-
         )
 
         c2.metric(
-
             "Maximum LST",
-
             f"{feature['lst'].max():.2f} °C"
-
         )
 
         c3.metric(
-
             "Average NDVI",
-
             f"{feature['ndvi'].mean():.2f}"
-
         )
 
         c4.metric(
-
-            "Pixels",
-
-            len(feature)
-
+            "Study Pixels",
+            f"{len(feature):,}"
         )
 
-        st.markdown("---")
+    st.divider()
 
-        fig=px.histogram(
+    left, right = st.columns([2,1])
 
-            feature,
+    with left:
 
-            x="lst",
+        st.subheader("Land Surface Temperature Distribution")
 
-            nbins=40,
+        if len(feature) > 0:
 
-            title="Land Surface Temperature"
+            fig = px.histogram(
+                feature,
+                x="lst",
+                nbins=40,
+                title=""
+            )
 
-        )
+            fig.update_layout(
+                plot_bgcolor="white",
+                paper_bgcolor="white",
+                height=420
+            )
 
-        st.plotly_chart(
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
 
-            fig,
+    with right:
 
-            use_container_width=True
+        st.subheader("Mission Information")
 
-        )
+        st.info("""
+**Satellite**
 
-        fig=px.scatter(
+Sentinel-2 MSI
+
+**Climate Data**
+
+ERA5
+
+**Elevation**
+
+SRTM DEM
+
+**AI Model**
+
+Random Forest Regressor
+
+**Study Area**
+
+Hyderabad
+
+**System Status**
+
+Operational
+""")
+
+    st.divider()
+
+    st.subheader("Vegetation vs Temperature")
+
+    if len(feature) > 0:
+
+        fig = px.scatter(
 
             feature.sample(
-
-                min(
-
-                    5000,
-
-                    len(feature)
-
-                )
-
+                min(5000, len(feature))
             ),
 
             x="ndvi",
@@ -209,7 +238,17 @@ if page=="🏠 Home":
 
             color="ndbi",
 
-            title="NDVI vs LST"
+            title=""
+
+        )
+
+        fig.update_layout(
+
+            plot_bgcolor="white",
+
+            paper_bgcolor="white",
+
+            height=500
 
         )
 
@@ -219,23 +258,17 @@ if page=="🏠 Home":
 
             use_container_width=True
 
-        )
-
-    else:
-
-        st.warning(
-
-            "feature_stack_ai.csv not found"
-
-        )
+        ),
 
 # --------------------------------------------------
 # SATELLITE
 # --------------------------------------------------
 
-elif page == "🛰 Satellite":
+elif page == "Satellite":
 
-    st.title("🛰Satellite Layers")
+    st.title("Satellite Analysis")
+    st.caption("Study Area: Hyderabad, Telangana, India")
+    st.divider()
     st.info("""
     📍 Study Area: Hyderabad, Telangana, India
 
@@ -267,19 +300,34 @@ elif page == "🛰 Satellite":
 
     if os.path.exists(img):
         st.image(img, use_container_width=True)
+        st.markdown("---")
+
+        layer_info = {
+           "NDVI": "Normalized Difference Vegetation Index used to assess vegetation density and health.",
+           "NDWI": "Normalized Difference Water Index used to identify water bodies and surface moisture.",
+           "NDBI": "Normalized Difference Built-up Index used to identify urban and built-up areas.",
+           "LST": "Land Surface Temperature derived from satellite observations for thermal analysis.",
+           "Heat Risk": "AI-generated heat risk map combining satellite indices and climate variables.",
+           "Elevation": "Digital Elevation Model (SRTM) representing terrain elevation."
+         }
+
+        st.subheader("Layer Description")
+        st.write(layer_info[layer])
     else:
         st.error(f"Image not found: {img}")
 # --------------------------------------------------
 # AI ANALYTICS
 # --------------------------------------------------
 
-elif page=="🤖 AI Analytics":
+elif page=="AI Analytics":
 
-    st.title("🤖 AI Analytics")
+    st.title("AI Decision Engine")
+    st.caption("Physics-Informed AI for Urban Heat Assessment")
+    st.divider()
     st.caption("Study Area: Hyderabad, Telangana, India")
     if len(metrics)>0:
 
-        st.subheader("Model Performance")
+        st.subheader("Model Evaluation Metrics")
 
         cols=st.columns(len(metrics))
 
@@ -294,7 +342,7 @@ elif page=="🤖 AI Analytics":
             )
             st.markdown("---")
 
-            st.subheader("🤖 AI Model Summary")
+            st.subheader("AI Model Summary")
 
             st.info("""
 
@@ -319,7 +367,7 @@ elif page=="🤖 AI Analytics":
              """)
             st.markdown("---")
 
-            st.subheader("💡 How AI Makes Decisions")
+            st.subheader("AI Decision Process")
 
             st.success("""
 
@@ -355,7 +403,7 @@ elif page=="🤖 AI Analytics":
 
     if len(importance)>0:
 
-        st.subheader("Feature Importance")
+        st.subheader("Model Feature Importance")
 
         fig=px.bar(
 
@@ -389,7 +437,7 @@ elif page=="🤖 AI Analytics":
 
     if len(confidence)>0:
 
-        st.subheader("Prediction Confidence")
+        st.subheader("Prediction Confidence Analysis")
 
         fig=px.histogram(
 
@@ -399,7 +447,7 @@ elif page=="🤖 AI Analytics":
 
             nbins=30,
 
-            title="Prediction Confidence Distribution"
+            title="Prediction Confidence Analysis Distribution"
 
         )
 
@@ -419,9 +467,9 @@ elif page=="🤖 AI Analytics":
 # RECOMMENDATIONS
 # --------------------------------------------------
 
-elif page=="🌳 Recommendations":
+elif page=="Recommendations":
 
-    st.title("🌳 AI Recommendations")
+    st.title("AI Recommendations")
     st.caption("Recommendations generated for Hyderabad Urban Heat Island mitigation.")
     if len(recommend)>0:
 
@@ -469,9 +517,9 @@ elif page=="🌳 Recommendations":
 # SCENARIO OPTIMIZER
 # --------------------------------------------------
 
-elif page=="📊 Scenario":
+elif page=="Scenario":
 
-    st.title("📊 Scenario Optimizer")
+    st.title("Scenario Optimizer")
     st.caption("Scenario analysis for Hyderabad metropolitan region.")
     if len(cooling)>0:
 
@@ -549,9 +597,9 @@ elif page=="📊 Scenario":
 # BUDGET PLANNER
 # --------------------------------------------------
 
-elif page == "💰 Budget":
+elif page == "Budget":
 
-    st.title("💰 Budget Planner")
+    st.title("Budget Planner")
     st.caption("Estimated implementation budget for Hyderabad.")
     if len(budget) > 0:
 
@@ -608,9 +656,9 @@ elif page == "💰 Budget":
 # NOVELTY
 # --------------------------------------------------
 
-elif page == "⭐ Novelty":
+elif page == "Novelty":
 
-    st.title("⭐ Project Novelty")
+    st.title("Project Novelty")
 
     st.success("""
 ### What makes our system unique?
@@ -660,9 +708,9 @@ rather than just a prediction model.
 # REPORTS
 # --------------------------------------------------
 
-elif page == "📄 Reports":
+elif page == "Reports":
 
-    st.title("📄 Reports")
+    st.title("Reports")
     st.caption("Generated reports for Hyderabad Urban Heat Island Decision Support System.")
     reports = [
 
@@ -722,7 +770,12 @@ elif page == "📄 Reports":
 
     st.write("""
 
-### AI Urban Heat Island Decision Support System
+### ISRO BHARATIYA ANTARIKSH HACKATHON 2026
+
+  AI Urban Heat Island Decision Support System
+
+ Study Area
+ Hyderabad, Telangana, India
 
 This project predicts Urban Heat Island intensity using
 
@@ -764,7 +817,7 @@ st.markdown(
 
 <center>
 
-<h4>🛰 AI Urban Heat Island Decision Support System</h4>
+<h4>AI Urban Heat Island Decision Support System</h4>
 
 ISRO Hackathon 2026
 
